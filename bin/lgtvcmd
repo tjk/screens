@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+# https://code.google.com/p/lg-tv-command/source/browse/trunk/lg-tv-command.c
+require 'docopt'
+
+doc = <<DOCOPT
+lgtvcmd
+
+Usage:
+  #{__FILE__} [--device=device] [--baud=9600] [--lg-id=0] CMD [<val>]
+  #{__FILE__} (--terminal | --sl | --sk | --ss | -h | --help)
+
+Arguments:
+  CMD                  command to get/set value
+
+Options:
+  -h, --help           show this help message and exit
+  --device=device      specify device
+  --terminal           enter terminal
+  --sl                 open EZ-ADJUST menu
+  --sk                 open IN-START menu
+  --ss                 factory defaults (IN-STOP)
+
+DOCOPT
+
+class Connection
+  def initialize(opts={})
+    raise 'device must be set to the serial port connection device' unless opts['--device']
+    # @fd =
+  end
+
+  def send_cmd
+  end
+end
+
+begin
+  args = Docopt::docopt(doc)
+  p args
+  Connection.new(args)
+rescue Docopt::Exit => e
+  puts e.message
+end

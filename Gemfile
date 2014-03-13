@@ -18,6 +18,8 @@ gem 'mysql2'
 gem 'sqlite3'
 gem 'active_model_serializers'
 
+gem 'docopt'
+
 group :assets do
   gem 'jquery-rails',         '~> 2.2.1'
   gem 'sass-rails'
